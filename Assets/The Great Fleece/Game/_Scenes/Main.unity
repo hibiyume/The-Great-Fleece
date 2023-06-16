@@ -16869,6 +16869,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 740945596}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &743270052 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95483830545951576, guid: 49be4103b035b448cb277ad3ac4b48f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1441941328}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &743270053 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4328310163252698, guid: 49be4103b035b448cb277ad3ac4b48f7,
@@ -25593,6 +25599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1256180968}
+  - component: {fileID: 1256180969}
   m_Layer: 0
   m_Name: Sleeping_Guard_Cutscene
   m_TagString: Untagged
@@ -25617,6 +25624,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &1256180969
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256180967}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: e5d50512b2f4c5f4ca597f61ce4e008d, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 1538883313746279386, guid: e5d50512b2f4c5f4ca597f61ce4e008d, type: 2}
+    value: {fileID: 2043896036}
+  - key: {fileID: -8609074783715461940, guid: e5d50512b2f4c5f4ca597f61ce4e008d, type: 2}
+    value: {fileID: 743270052}
+  - key: {fileID: 6996832694373996656, guid: e5d50512b2f4c5f4ca597f61ce4e008d, type: 2}
+    value: {fileID: 1907778159}
+  m_ExposedReferences:
+    m_References:
+    - a51faca4871e82346baac182f22bf681: {fileID: 1907778157}
+    - c54a2996eda7c7a48aa9d0a91bb9e6a8: {fileID: 219687088}
 --- !u!1 &1257914124
 GameObject:
   m_ObjectHideFlags: 0
@@ -34374,6 +34406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1907778158}
   - component: {fileID: 1907778157}
+  - component: {fileID: 1907778159}
   m_Layer: 0
   m_Name: CM OTS Shot
   m_TagString: Untagged
@@ -34422,7 +34455,28 @@ Transform:
   - {fileID: 177993732}
   m_Father: {fileID: 1988439885}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 339, y: -0, z: -3}
+--- !u!95 &1907778159
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1907778156}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1907967192
 GameObject:
   m_ObjectHideFlags: 0
@@ -41858,8 +41912,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043896029}
-  m_LocalRotation: {x: -0.07786809, y: 0.87110066, z: -0.14664373, w: -0.46218592}
-  m_LocalPosition: {x: 3.664, y: 2.599, z: -105.849}
+  m_LocalRotation: {x: 0.086493984, y: 0.8597062, z: -0.15541005, w: 0.47882333}
+  m_LocalPosition: {x: -5.270301, y: 3.165, z: -105.989}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
