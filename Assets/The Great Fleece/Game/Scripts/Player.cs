@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
                 _animator.SetBool("Walk", true);
             }
         }
-
+        
         if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance < 0.1f)
         {
             _animator.SetBool("Walk", false);
