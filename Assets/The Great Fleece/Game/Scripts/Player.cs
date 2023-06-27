@@ -6,10 +6,14 @@ using UnityEngine.AI;
 public class Player : MonoBehaviour
 {
     private NavMeshAgent _navMeshAgent;
+    private Animator _animator;
+
+    private Vector3 target;
     
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -22,10 +26,15 @@ public class Player : MonoBehaviour
 
             if (Physics.Raycast(ray, out var hit))
             {
-                _navMeshAgent.SetDestination(hit.point);
+                target = hit.point;
+                _navMeshAgent.SetDestination(target);
+                _animator.SetBool("Walk", true);
             }
         }
-        //debug the floor position hit
-        //create object at floor position
+
+        if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance < 0.1f)
+        {
+            _animator.SetBool("Walk", false);
+        }
     }
 }
