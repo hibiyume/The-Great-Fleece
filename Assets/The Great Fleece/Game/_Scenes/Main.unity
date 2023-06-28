@@ -46247,7 +46247,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wayPoints: []
-  currentTarget: {fileID: 0}
+  minIdleDelay: 2
+  maxIdleDelay: 4
 --- !u!1001 &1742294997
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -49670,7 +49671,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wayPoints: []
-  currentTarget: {fileID: 0}
+  minIdleDelay: 2
+  maxIdleDelay: 4
 --- !u!1001 &1887400401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65200,7 +65202,8 @@ MonoBehaviour:
   - {fileID: 98208908}
   - {fileID: 2037522276}
   - {fileID: 2009087187}
-  currentTarget: {fileID: 0}
+  minIdleDelay: 2
+  maxIdleDelay: 4
 --- !u!1001 &2100339662
 PrefabInstance:
   m_ObjectHideFlags: 0

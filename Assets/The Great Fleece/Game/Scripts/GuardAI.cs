@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class GuardAI : MonoBehaviour
 {
     [SerializeField] private List<Transform> wayPoints;
-    [SerializeField] private Transform currentTarget;
+    [SerializeField] private float minIdleDelay = 2f;
+    [SerializeField] private float maxIdleDelay = 4f;
 
     private NavMeshAgent _navMeshAgent;
-    private int _prevWayPointIndex = 0;
+    private int _currentTarget;
     private bool _movingForward = true;
+    private bool _targetReached = false;
 
     private void Start()
     {
@@ -22,31 +25,34 @@ public class GuardAI : MonoBehaviour
         {
             if (wayPoints[0] != null)
             {
-                currentTarget = wayPoints[0];
-                _navMeshAgent.SetDestination(currentTarget.position);
+                _navMeshAgent.SetDestination(wayPoints[_currentTarget].position);
             }
         }
     }
 
     private void Update()
     {
-        if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance < 0.1f && wayPoints.Count > 0)
+        if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance < 0.1f && wayPoints.Count > 0 && !_targetReached)
         {
-            if (_prevWayPointIndex == wayPoints.Count - 1)
-                _movingForward = false;
-            else if (_prevWayPointIndex == 0)
-                _movingForward = true;
-            
-            int newWaypointIndex;
-            if (_movingForward)
-                newWaypointIndex = _prevWayPointIndex + 1;
-            else
-                newWaypointIndex = _prevWayPointIndex - 1;
-
-            currentTarget = wayPoints[newWaypointIndex]; 
-            _navMeshAgent.SetDestination(currentTarget.position);
-
-            _prevWayPointIndex = newWaypointIndex;
+            _targetReached = true;
+            StartCoroutine(MoveToNextWaypoint());
         }
+    }
+    IEnumerator MoveToNextWaypoint()
+    {
+        yield return new WaitForSeconds(Random.Range(minIdleDelay, maxIdleDelay));
+
+        if (_currentTarget == 0)
+            _movingForward = true;
+        else if (_currentTarget == wayPoints.Count - 1)
+            _movingForward = false;
+
+        if (_movingForward)
+            _currentTarget++;
+        else
+            _currentTarget--;
+        
+        _navMeshAgent.SetDestination(wayPoints[_currentTarget].position);
+        _targetReached = false;
     }
 }
