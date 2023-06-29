@@ -14,7 +14,6 @@ public class CameraTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            print($"{gameObject.name} triggered");
             Camera.main.transform.position = cameraTransform.position;
             Camera.main.transform.rotation = cameraTransform.rotation;
         }
