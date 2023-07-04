@@ -30,6 +30,7 @@ public class GuardAI : MonoBehaviour
             if (wayPoints[0] != null)
             {
                 _navMeshAgent.SetDestination(wayPoints[_currentTarget].position);
+                _animator.SetBool("Walk", true);
             }
         }
     }
