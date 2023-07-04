@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
 
             if (Physics.Raycast(ray, out var hit))
             {
+                _animator.SetTrigger("Throw");
+                
                 GameObject coin = Instantiate(coinPrefab, hit.point, Quaternion.identity);
                 coin.GetComponentInChildren<AudioSource>().Play();
                 MoveGuardsToCoin(coin.transform.position);
