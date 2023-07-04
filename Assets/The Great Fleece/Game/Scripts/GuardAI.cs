@@ -16,7 +16,9 @@ public class GuardAI : MonoBehaviour
     private Animator _animator;
     private int _currentTarget;
     private bool _movingForward = true;
-    private bool _targetReached = false;
+    private bool _targetReached;
+    
+    private bool _coinTossed;
 
     private void Start()
     {
@@ -35,7 +37,7 @@ public class GuardAI : MonoBehaviour
     private void Update()
     {
         if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance < 0.1f && wayPoints.Count > 1 &&
-            !_targetReached)
+            !_targetReached && !_coinTossed)
         {
             _targetReached = true;
             _animator.SetBool("Walk", false);
@@ -52,16 +54,31 @@ public class GuardAI : MonoBehaviour
 
             StartCoroutine(MoveToNextSpot(wayPoints[_currentTarget].position));
         }
+        else if (_coinTossed && !_navMeshAgent.pathPending && _navMeshAgent.remainingDistance < 1.5f)
+        {
+            _animator.SetBool("Walk", false);
+            StartCoroutine(MoveToNextSpot(wayPoints[_currentTarget].position));
+            _coinTossed = false;
+        }
+        else if (!_navMeshAgent.pathPending && _navMeshAgent.remainingDistance < 1.5f && wayPoints.Count == 1)
+        {
+            _animator.SetBool("Walk", false);
+        }
     }
     public IEnumerator MoveToNextSpot(Vector3 position)
     {
-        yield return new WaitForSeconds(Random.Range(minIdleDelay, maxIdleDelay));
+        //yield return new WaitForSeconds(Random.Range(minIdleDelay, maxIdleDelay));
+        yield return new WaitForSeconds(Random.Range(minIdleDelay / 5f, maxIdleDelay / 5f));
 
-        if (_navMeshAgent.remainingDistance > 0.1f)
-        {
-            _navMeshAgent.SetDestination(position);
-            _targetReached = false;
-            _animator.SetBool("Walk", true);
-        }
+        _targetReached = false;
+        _navMeshAgent.SetDestination(position);
+        _animator.SetBool("Walk", true);
+    }
+
+    public void MoveToCoinSpot(Vector3 position)
+    {
+        _coinTossed = true;
+        _navMeshAgent.SetDestination(position);
+        _animator.SetBool("Walk", true);
     }
 }

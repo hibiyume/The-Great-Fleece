@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
 
         foreach (var guard in guards)
         {
-            StartCoroutine(guard.GetComponent<GuardAI>().MoveToNextSpot(coinPosition));
+            guard.GetComponent<GuardAI>().MoveToCoinSpot(coinPosition);
         }
     }
 }
