@@ -20,15 +20,28 @@ public class AudioManager : MonoBehaviour
     }
 
     [SerializeField] private AudioSource voiceOverSource;
+    [SerializeField] private AudioSource musicSource;
 
     private void Awake()
     {
         _instance = this;
     }
 
-    public void PlayVoiceOverClip(AudioClip audioClip)
+    public void PlayVoiceOver(AudioClip audioClip)
     {
         voiceOverSource.clip = audioClip;
         voiceOverSource.Play();
+    }
+
+    public void PlayMusic(AudioClip musicClip)
+    {
+        musicSource.clip = musicClip;
+        musicSource.Play();
+    }
+
+    public void StopAudio()
+    {
+        voiceOverSource.Stop();
+        musicSource.Stop();
     }
 }

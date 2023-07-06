@@ -13,6 +13,7 @@ public class WinTrigger : MonoBehaviour
         {
             if (GameManager.Instance.HasCard)
             {
+                GameManager.Instance.GameWon();
                 winCutscene.SetActive(true);
             }
             else

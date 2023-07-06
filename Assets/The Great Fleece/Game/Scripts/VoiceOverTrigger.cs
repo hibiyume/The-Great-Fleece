@@ -12,7 +12,7 @@ public class VoiceOverTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player") && !_isPlayed)
         {
-            AudioManager.Instance.PlayVoiceOverClip(_audioClip);
+            AudioManager.Instance.PlayVoiceOver(_audioClip);
             _isPlayed = true;
         }
     }
