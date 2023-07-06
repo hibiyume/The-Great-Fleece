@@ -5,19 +5,14 @@ using UnityEngine;
 
 public class VoiceOverTrigger : MonoBehaviour
 {
-    private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audioClip;
     private bool _isPlayed;
-
-    private void Start()
-    {
-        _audioSource = GetComponent<AudioSource>();
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !_isPlayed)
         {
-            _audioSource.Play();
+            AudioManager.Instance.PlayVoiceOverClip(_audioClip);
             _isPlayed = true;
         }
     }
